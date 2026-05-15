@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salsa Macha La Poblanita | Pedido por WhatsApp</title>
+  <meta name="description" content="Salsa Macha La Poblanita, salsa macha casera preparada por tanda semanal. Aparta la tuya por WhatsApp." />
+  <style>
+    :root {
+      --vino: #7e1714;
+      --vino-oscuro: #4a0d0b;
+      --rojo: #b62b1f;
+      --chile: #c94a1c;
+      --crema: #fff5e4;
+      --crema-2: #ffe8c3;
+      --miel: #f0b35a;
+      --cafe: #5b2f19;
+      --texto: #2b1711;
+      --verde: #698f48;
+      --whatsapp: #18b54a;
+      --borde: rgba(126, 23, 20, .18);
+      --sombra: 0 22px 60px rgba(74, 13, 11, .18);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--texto);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 225, 177, .9), transparent 36rem),
+        linear-gradient(180deg, #fff8ed 0%, #fff1dc 45%, #ffe6bf 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image:
+        radial-gradient(rgba(126, 23, 20, .18) 1px, transparent 1px),
+        radial-gradient(rgba(126, 23, 20, .12) 1px, transparent 1px);
+      background-position: 0 0, 12px 12px;
+      background-size: 24px 24px;
+      mix-blend-mode: multiply;
+      z-index: -1;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .page { min-height: 100vh; }
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 560px);
+      gap: clamp(1rem, 4vw, 4rem);
+      align-items: center;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 5rem) 1.25rem 2rem;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -9rem;
+      top: 2rem;
+      width: 32rem;
+      height: 32rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 74, 28, .16), transparent 70%);
+      z-index: -1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .5rem .8rem;
+      border: 1px solid var(--borde);
+      border-radius: 999px;
+      color: var(--vino);
+      background: rgba(255, 255, 255, .55);
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      font-size: .76rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: .9;
+      color: var(--vino);
+      text-wrap: balance;
+      font-size: clamp(3rem, 8vw, 6.6rem);
+      letter-spacing: -.05em;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--rojo);
+      font-style: italic;
+      transform: rotate(-1.5deg);
+    }
+
+    .subhead {
+      max-width: 580px;
+      margin: 1.4rem 0 1.2rem;
+      font-size: clamp(1rem, 1.8vw, 1.22rem);
+      line-height: 1.7;
+      color: #4e2a1f;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin: 1.5rem 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem .95rem;
+      border-radius: 999px;
+      background: #fffaf1;
+      border: 1px solid var(--borde);
+      box-shadow: 0 10px 30px rgba(126, 23, 20, .08);
+      font-weight: 800;
+      color: var(--vino-oscuro);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 1rem 1.35rem;
+      font-weight: 900;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--whatsapp); color: white; box-shadow: 0 16px 30px rgba(24, 181, 74, .28); }
+    .btn-secondary { background: #fffaf1; color: var(--vino); border: 1px solid var(--borde); }
+
+    .price-card {
+      display: inline-grid;
+      place-items: center;
+      min-width: 130px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--vino), #3f0a08);
+      color: white;
+      border: 4px solid #fff1db;
+      box-shadow: var(--sombra);
+      transform: rotate(4deg);
+    }
+
+    .price-card strong { font-size: 2.8rem; line-height: 1; }
+    .price-card small { font-weight: 800; }
+
+    .hero-art {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: end center;
+      isolation: isolate;
+    }
+
+    .hero-art .bg-photo {
+      position: absolute;
+      inset: 3rem 0 0 1rem;
+      width: 94%;
+      height: 72%;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      filter: saturate(1.05) contrast(1.04);
+      z-index: -2;
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 3rem 0 0 1rem;
+      border-radius: var(--radius);
+      background: linear-gradient(90deg, rgba(74,13,11,.22), rgba(74,13,11,.03));
+      z-index: -1;
+    }
+
+    .cook {
+      width: min(98%, 550px);
+      filter: drop-shadow(0 24px 28px rgba(74, 13, 11, .25));
+      transform: translateY(1rem);
+    }
+
+    .ribbon {
+      background: linear-gradient(90deg, var(--vino-oscuro), var(--vino), var(--rojo));
+      color: white;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 16px 40px rgba(74, 13, 11, .18);
+    }
+
+    .ribbon-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .ribbon-item {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 850;
+      padding: .35rem 0;
+    }
+
+    .ribbon-item .icon { font-size: 1.75rem; }
+
+    section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--vino);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin: 0 0 1.5rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 1.1rem;
+      align-items: stretch;
+    }
+
+    .gallery-card,
+    .note-card,
+    .order-card {
+      background: rgba(255, 250, 241, .88);
+      border: 1px solid var(--borde);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 40px rgba(126, 23, 20, .10);
+      overflow: hidden;
+    }
+
+    .gallery-card img { width: 100%; height: 100%; object-fit: cover; min-height: 360px; }
+    .note-card {
+      padding: clamp(1.2rem, 3vw, 2rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .note-card h3 {
+      margin: 0;
+      color: var(--vino);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .note-card p { margin: 0; line-height: 1.7; font-size: 1.05rem; }
+
+    .order-wrap { padding-top: 1rem; }
+    .order-card { padding: clamp(1rem, 2.7vw, 1.6rem); }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+
+    .field {
+      background: rgba(255, 255, 255, .55);
+      border: 1px solid var(--borde);
+      border-radius: 20px;
+      padding: 1rem;
+    }
+
+    .col-3 { grid-column: span 3; }
+    .col-4 { grid-column: span 4; }
+    .col-5 { grid-column: span 5; }
+    .col-6 { grid-column: span 6; }
+    .col-7 { grid-column: span 7; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    label,
+    .label {
+      display: block;
+      color: var(--vino);
+      font-weight: 900;
+      margin-bottom: .55rem;
+      font-size: .95rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(126,23,20,.22);
+      border-radius: 14px;
+      background: #fffaf2;
+      color: var(--texto);
+      font: inherit;
+      padding: .95rem 1rem;
+      outline: none;
+      transition: border .2s ease, box-shadow .2s ease;
+    }
+
+    textarea { resize: vertical; min-height: 96px; }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--chile);
+      box-shadow: 0 0 0 4px rgba(201,74,28,.12);
+    }
+
+    .qty {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(126,23,20,.18);
+      background: #fffaf2;
+    }
+
+    .qty button {
+      width: 48px;
+      height: 48px;
+      border: 0;
+      background: #fff1dc;
+      color: var(--vino);
+      font-size: 1.6rem;
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    .qty input {
+      width: 62px;
+      height: 48px;
+      padding: 0;
+      text-align: center;
+      border: 0;
+      border-radius: 0;
+      font-weight: 900;
+      font-size: 1.25rem;
+      background: #fffaf2;
+    }
+
+    .delivery-options {
+      display: grid;
+      gap: .65rem;
+    }
+
+    .delivery-option {
+      display: flex;
+      gap: .65rem;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      border: 1px solid rgba(126,23,20,.22);
+      background: #fffaf2;
+      border-radius: 16px;
+      padding: .9rem;
+      cursor: pointer;
+      font-weight: 850;
+      color: var(--texto);
+    }
+
+    .delivery-option.active {
+      border-color: var(--chile);
+      background: #fff2db;
+      box-shadow: 0 0 0 4px rgba(201,74,28,.10);
+    }
+
+    .choice-list { display: grid; gap: .65rem; }
+    .radio-line {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      line-height: 1.35;
+      cursor: pointer;
+    }
+
+    .radio-line input { width: auto; accent-color: var(--vino); }
+    .hint {
+      font-size: .9rem;
+      color: #684033;
+      line-height: 1.55;
+      margin-top: .5rem;
+    }
+
+    .status-note {
+      background: #fff1dc;
+      color: #5f2615;
+      border: 1px dashed rgba(126,23,20,.35);
+      border-radius: 16px;
+      padding: .9rem;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: .5rem 1rem;
+      align-items: center;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 18px;
+      background: #fff2da;
+      border: 1px solid rgba(126,23,20,.16);
+      font-weight: 800;
+    }
+
+    .summary strong { color: var(--vino); font-size: 1.25rem; }
+
+    .send-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .75rem;
+      margin-top: 1.2rem;
+      text-align: center;
+    }
+
+    .send-row .btn-primary {
+      width: min(100%, 520px);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      padding: 1.05rem 1.4rem;
+    }
+
+    .footer {
+      text-align: center;
+      color: #fff6e8;
+      background: linear-gradient(90deg, var(--vino-oscuro), var(--vino));
+      padding: 1.2rem;
+      font-weight: 800;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; padding-top: 2rem; }
+      .hero-art { min-height: 420px; order: -1; }
+      .hero-art .bg-photo { height: 70%; inset: 1rem 0 0 0; width: 100%; }
+      .hero-art::before { inset: 1rem 0 0 0; }
+      .cook { width: min(92%, 480px); }
+      .ribbon-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery { grid-template-columns: 1fr; }
+      .col-3, .col-4, .col-5, .col-6, .col-7, .col-8 { grid-column: span 12; }
+    }
+
+    @media (max-width: 620px) {
+      .hero { padding-inline: 1rem; }
+      h1 { font-size: clamp(3rem, 17vw, 5rem); }
+      .badges { align-items: stretch; }
+      .badge { width: 100%; justify-content: center; }
+      .cta-row .btn { width: 100%; }
+      .price-card { min-width: 112px; }
+      .ribbon-grid { grid-template-columns: 1fr; }
+      section { padding: 2.2rem 1rem; }
+      .order-card { border-radius: 22px; }
+      .field { padding: .9rem; border-radius: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">🌶️ Tanda semanal · Piezas limitadas</div>
+        <h1>Salsa Macha <span>La Poblanita</span></h1>
+        <p class="subhead">
+          Salsa macha casera preparada en pequeñas cantidades, con sabor intenso,
+          textura crujiente y el toque perfecto para tus comidas.
+        </p>
+
+        <div class="badges">
+          <div class="badge">🥄 Crujiente y sabrosa</div>
+          <div class="badge">🏡 Hecha en casa</div>
+          <div class="badge">🫙 Frasco de 125 ml aprox.</div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#pedido">📲 Apartar por WhatsApp</a>
+          <a class="btn btn-secondary" href="#salsa">Ver detalles</a>
+          <div class="price-card" aria-label="Precio 25 pesos por frasco">
+            <strong>$25</strong>
+            <small>por frasco</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <img class="bg-photo" src="assets/salsa-macha-portada.png" alt="Salsa macha casera en frasco con ingredientes" />
+        <img class="cook" src="assets/cocinera-salsa-macha.png" alt="Cocinera mostrando salsa macha casera" />
+      </div>
+    </header>
+
+    <div class="ribbon" id="salsa">
+      <div class="ribbon-grid">
+        <div class="ribbon-item"><span class="icon">🌶️</span><span>Ingredientes seleccionados</span></div>
+        <div class="ribbon-item"><span class="icon">🥜</span><span>Textura crujiente</span></div>
+        <div class="ribbon-item"><span class="icon">🫙</span><span>Frasco 125 ml aprox.</span></div>
+        <div class="ribbon-item"><span class="icon">🏠</span><span>Producto casero</span></div>
+      </div>
+    </div>
+
+    <section aria-labelledby="detalles-title">
+      <h2 class="section-title" id="detalles-title">Sabor de casa, hecho por tanda</h2>
+      <div class="gallery">
+        <div class="gallery-card">
+          <img src="assets/salsa-macha-portada.png" alt="Frasco de salsa macha casera sobre mesa rústica" />
+        </div>
+        <div class="note-card">
+          <h3>Producto casero preparado por tanda semanal</h3>
+          <p>
+            La disponibilidad es limitada hasta agotar existencia. Cada pedido se confirma por WhatsApp,
+            así podemos acordar entrega, horario y cualquier detalle especial.
+          </p>
+          <p>
+            Ideal para tacos, quesadillas, huevos, carnes, sopas, antojitos o para darle carácter a la comida del día.
+          </p>
+          <div class="status-note">Piezas limitadas por tanda semanal. Aparta la tuya antes de que se acabe.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="order-wrap" id="pedido" aria-labelledby="pedido-title">
+      <h2 class="section-title" id="pedido-title">Aparta tu salsa macha</h2>
+      <form class="order-card" id="orderForm">
+        <div class="form-grid">
+          <div class="field col-3">
+            <span class="label">1. ¿Cuántos frascos quieres?</span>
+            <div class="qty" aria-label="Cantidad de frascos">
+              <button type="button" id="minusBtn" aria-label="Restar frasco">−</button>
+              <input id="quantity" name="quantity" type="number" value="1" min="1" max="30" inputmode="numeric" />
+              <button type="button" id="plusBtn" aria-label="Agregar frasco">+</button>
+            </div>
+            <div class="hint">125 ml aprox., puede variar.</div>
+            <div class="summary">
+              <span>Total estimado</span>
+              <strong id="total">$25</strong>
+            </div>
+          </div>
+
+          <div class="field col-4">
+            <label for="name">2. Tu nombre</label>
+            <input id="name" name="name" type="text" placeholder="Nombre completo" autocomplete="name" required />
+            <br /><br />
+            <label for="phone">Teléfono / WhatsApp</label>
+            <input id="phone" name="phone" type="tel" placeholder="Ej. 729 000 0000" autocomplete="tel" required />
+          </div>
+
+          <div class="field col-5">
+            <span class="label">3. ¿Cómo quieres recibir tu pedido?</span>
+            <div class="delivery-options" role="group" aria-label="Forma de entrega">
+              <button class="delivery-option active" type="button" data-delivery="Recoger en punto cercano">📍 Recoger en punto cercano</button>
+              <button class="delivery-option" type="button" data-delivery="Entrega a domicilio">🏠 Entrega a domicilio</button>
+              <button class="delivery-option" type="button" data-delivery="Acordar punto de entrega realizado el pedido">💬 Acordar punto después del pedido</button>
+            </div>
+            <input type="hidden" id="deliveryType" value="Recoger en punto cercano" />
+            <p class="hint">El pedido se enviará por WhatsApp para confirmar disponibilidad.</p>
+          </div>
+
+          <div class="field col-6" id="pickupBox">
+            <span class="label">4. Elige un punto cercano</span>
+            <div class="choice-list">
+              <label class="radio-line"><input type="radio" name="pickupPoint" value="Casa de Cultura" checked /> Casa de Cultura</label>
+              <label class="radio-line"><input type="radio" name="pickupPoint" value="Iglesia de Santa María" /> Iglesia de Santa María</label>
+              <label class="radio-line"><input type="radio" name="pickupPoint" value="Bodega Aurrera" /> Bodega Aurrera</label>
+              <label class="radio-line"><input type="radio" name="pickupPoint" value="Semáforo del centro de Ocoyoacac" /> Semáforo del centro de Ocoyoacac</label>
+              <label class="radio-line"><input type="radio" name="pickupPoint" value="Semáforo del panteón" /> Semáforo del panteón</label>
+              <label class="radio-line"><input type="radio" name="pickupPoint" value="Semáforo del rastro" /> Semáforo del rastro</label>
+              <label class="radio-line"><input type="radio" name="pickupPoint" value="OXXO del centro de Ocoyoacac" /> OXXO del centro de Ocoyoacac</label>
+            </div>
+          </div>
+
+          <div class="field col-6 hidden" id="homeBox">
+            <span class="label">4. Entrega a domicilio</span>
+            <div class="choice-list">
+              <label class="radio-line"><input type="radio" name="homeZone" value="Zona centro de Ocoyoacac" checked /> Zona centro de Ocoyoacac</label>
+              <label class="radio-line"><input type="radio" name="homeZone" value="Consultar si mi domicilio aplica" /> Consultar si mi domicilio aplica</label>
+            </div>
+            <br />
+            <label for="address">Dirección o referencia</label>
+            <textarea id="address" placeholder="Calle, colonia o referencia breve"></textarea>
+            <p class="hint">La entrega a domicilio está sujeta a zona, horario y disponibilidad.</p>
+          </div>
+
+          <div class="field col-6 hidden" id="agreeBox">
+            <span class="label">4. Punto a acordar</span>
+            <div class="status-note">
+              Se enviará el pedido por WhatsApp y ahí se acordará el punto de entrega.
+            </div>
+          </div>
+
+          <div class="field col-6">
+            <label for="timeSlot">5. Horario preferido</label>
+            <select id="timeSlot" required>
+              <option value="">Selecciona un horario</option>
+              <option>Mañana: 10:00 am a 12:00 pm</option>
+              <option>Mediodía: 12:00 pm a 2:00 pm</option>
+              <option>Tarde: 4:00 pm a 6:00 pm</option>
+              <option>Noche: 6:00 pm a 8:00 pm</option>
+              <option>Acordar por WhatsApp</option>
+            </select>
+            <p class="hint">El horario se confirma por WhatsApp según disponibilidad.</p>
+          </div>
+
+          <div class="field col-12">
+            <label for="notes">6. Mensaje adicional <span style="font-weight:600; color:#795044;">(opcional)</span></label>
+            <textarea id="notes" placeholder="Ej. referencias, instrucciones, comentarios, etc."></textarea>
+          </div>
+        </div>
+
+        <div class="send-row">
+          <button class="btn btn-primary" type="submit">🟢 Enviar pedido por WhatsApp</button>
+          <small>🔒 Tu información solo se usará para coordinar tu pedido.</small>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Gracias por apoyar lo hecho en casa · Salsa Macha La Poblanita
+  </footer>
+
+  <script>
+    const WHATSAPP_NUMBER = "527293736820";
+    const PRICE = 25;
+
+    const quantity = document.getElementById("quantity");
+    const total = document.getElementById("total");
+    const minusBtn = document.getElementById("minusBtn");
+    const plusBtn = document.getElementById("plusBtn");
+    const deliveryButtons = document.querySelectorAll(".delivery-option");
+    const deliveryType = document.getElementById("deliveryType");
+    const pickupBox = document.getElementById("pickupBox");
+    const homeBox = document.getElementById("homeBox");
+    const agreeBox = document.getElementById("agreeBox");
+    const orderForm = document.getElementById("orderForm");
+
+    function cleanQty(value) {
+      const number = parseInt(value, 10);
+      if (Number.isNaN(number) || number < 1) return 1;
+      if (number > 30) return 30;
+      return number;
+    }
+
+    function updateTotal() {
+      quantity.value = cleanQty(quantity.value);
+      total.textContent = `$${cleanQty(quantity.value) * PRICE}`;
+    }
+
+    minusBtn.addEventListener("click", () => {
+      quantity.value = Math.max(1, cleanQty(quantity.value) - 1);
+      updateTotal();
+    });
+
+    plusBtn.addEventListener("click", () => {
+      quantity.value = Math.min(30, cleanQty(quantity.value) + 1);
+      updateTotal();
+    });
+
+    quantity.addEventListener("input", updateTotal);
+
+    function showDeliveryFields(type) {
+      pickupBox.classList.toggle("hidden", type !== "Recoger en punto cercano");
+      homeBox.classList.toggle("hidden", type !== "Entrega a domicilio");
+      agreeBox.classList.toggle("hidden", type !== "Acordar punto de entrega realizado el pedido");
+    }
+
+    deliveryButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        deliveryButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+        deliveryType.value = button.dataset.delivery;
+        showDeliveryFields(deliveryType.value);
+      });
+    });
+
+    function getCheckedValue(name) {
+      const item = document.querySelector(`input[name="${name}"]:checked`);
+      return item ? item.value : "";
+    }
+
+    function buildMessage() {
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const qty = cleanQty(quantity.value);
+      const type = deliveryType.value;
+      const time = document.getElementById("timeSlot").value;
+      const notes = document.getElementById("notes").value.trim();
+      const address = document.getElementById("address").value.trim();
+
+      let point = "";
+      if (type === "Recoger en punto cercano") {
+        point = getCheckedValue("pickupPoint");
+      } else if (type === "Entrega a domicilio") {
+        point = getCheckedValue("homeZone");
+        if (address) point += ` | Dirección o referencia: ${address}`;
+      } else {
+        point = "Acordar punto de entrega realizado el pedido";
+      }
+
+      return [
+        "Hola, quiero apartar Salsa Macha La Poblanita.",
+        "",
+        `Nombre: ${name}`,
+        `Teléfono: ${phone}`,
+        `Cantidad: ${qty} frasco(s) de 125 ml aprox.`,
+        `Total estimado: $${qty * PRICE}`,
+        `Forma de entrega: ${type}`,
+        `Punto / zona: ${point}`,
+        `Horario preferido: ${time}`,
+        notes ? `Mensaje adicional: ${notes}` : "Mensaje adicional: Ninguno",
+        "",
+        "Entiendo que el producto es casero, preparado por tanda semanal y sujeto a disponibilidad."
+      ].join("\n");
+    }
+
+    orderForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      updateTotal();
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const time = document.getElementById("timeSlot").value;
+
+      if (!name || !phone || !time) {
+        alert("Por favor completa tu nombre, teléfono y horario preferido.");
+        return;
+      }
+
+      const message = encodeURIComponent(buildMessage());
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    });
+
+    updateTotal();
+  </script>
+</body>
+</html>
