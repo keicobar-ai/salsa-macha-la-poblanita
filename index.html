@@ -10,22 +10,22 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --vino: #7e1714;
-      --vino-oscuro: #4a0d0b;
-      --rojo: #b62b1f;
-      --chile: #c94a1c;
-      --crema: #fff5e4;
-      --crema-2: #ffe8c3;
-      --miel: #f0b35a;
-      --cafe: #5b2f19;
-      --texto: #2b1711;
-      --verde: #698f48;
-      --whatsapp: #18b54a;
-      --borde: rgba(126, 23, 20, .18);
-      --sombra: 0 22px 60px rgba(74, 13, 11, .18);
-      --sombra-suave: 0 14px 34px rgba(74, 13, 11, .13);
-      --sombra-img: 0 20px 45px rgba(74, 13, 11, .22);
-      --radius: 28px;
+      --vino: #7d1712;
+      --vino-oscuro: #460a08;
+      --rojo: #b22b20;
+      --chile: #cb4d1e;
+      --crema: #fff4df;
+      --crema-clara: #fffaf0;
+      --crema-profunda: #f7dfba;
+      --miel: #f2b35f;
+      --cafe: #5d2e18;
+      --texto: #2d1710;
+      --whatsapp: #18b84e;
+      --borde: rgba(125, 23, 18, .18);
+      --sombra: 0 24px 58px rgba(70, 10, 8, .20);
+      --sombra-suave: 0 14px 34px rgba(70, 10, 8, .13);
+      --sombra-img: 0 26px 54px rgba(70, 10, 8, .24);
+      --radius: 30px;
     }
 
     * { box-sizing: border-box; }
@@ -35,8 +35,9 @@
       color: var(--texto);
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(255, 225, 177, .9), transparent 36rem),
-        linear-gradient(180deg, #fff8ed 0%, #fff1dc 45%, #ffe6bf 100%);
+        radial-gradient(circle at 12% 0%, rgba(255, 222, 166, .82), transparent 34rem),
+        radial-gradient(circle at 92% 30%, rgba(178, 43, 32, .08), transparent 27rem),
+        linear-gradient(180deg, #fff8eb 0%, #fff1dc 48%, #ffe4bb 100%);
       overflow-x: hidden;
     }
 
@@ -45,115 +46,213 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: .18;
+      opacity: .16;
       background-image:
-        radial-gradient(rgba(126, 23, 20, .18) 1px, transparent 1px),
-        radial-gradient(rgba(126, 23, 20, .12) 1px, transparent 1px);
+        radial-gradient(rgba(125, 23, 18, .22) 1px, transparent 1px),
+        radial-gradient(rgba(125, 23, 18, .13) 1px, transparent 1px);
       background-position: 0 0, 12px 12px;
       background-size: 24px 24px;
       mix-blend-mode: multiply;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto -8rem -14rem auto;
+      width: 34rem;
+      height: 34rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(203, 77, 30, .16), transparent 70%);
+      pointer-events: none;
       z-index: -1;
     }
 
     img { max-width: 100%; display: block; }
-    .image-depth { box-shadow: var(--sombra-img); }
     a { color: inherit; }
-
     .page { min-height: 100vh; }
+
     .hero {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(320px, 560px);
-      gap: clamp(1rem, 4vw, 4rem);
-      align-items: center;
       max-width: 1180px;
-      margin: 0 auto;
-      padding: clamp(2rem, 5vw, 5rem) 1.25rem 2rem;
+      margin: clamp(1rem, 2vw, 1.5rem) auto 0;
+      padding: 0 1.25rem;
     }
 
-    .hero::after {
+    .hero-shell {
+      position: relative;
+      min-height: 660px;
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(320px, 1.05fr);
+      gap: clamp(1rem, 4vw, 3rem);
+      align-items: center;
+      padding: clamp(2rem, 4.5vw, 4.4rem);
+      border-radius: 38px;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: var(--sombra-img);
+      border: 1px solid rgba(125, 23, 18, .16);
+      background: linear-gradient(90deg, rgba(255, 244, 223, .92), rgba(255, 244, 223, .68));
+    }
+
+    .hero-shell::before {
       content: "";
       position: absolute;
-      right: -9rem;
-      top: 2rem;
-      width: 32rem;
-      height: 32rem;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201, 74, 28, .16), transparent 70%);
-      z-index: -1;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 246, 231, .93) 0%, rgba(255, 246, 231, .82) 43%, rgba(70, 10, 8, .10) 100%),
+        url('assets/salsa-macha-portada.png') center/cover no-repeat;
+      filter: saturate(1.08) contrast(1.05);
+      z-index: -2;
     }
+
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 86% 42%, rgba(255, 221, 158, .22), transparent 20rem),
+        linear-gradient(180deg, transparent 0 72%, rgba(70, 10, 8, .22));
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hero-copy { position: relative; z-index: 2; }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: .45rem;
-      padding: .5rem .8rem;
-      border: 1px solid var(--borde);
+      padding: .58rem .88rem;
+      border: 1px solid rgba(125, 23, 18, .20);
       border-radius: 999px;
       color: var(--vino);
-      background: rgba(255, 255, 255, .55);
-      font-weight: 800;
+      background: rgba(255, 250, 240, .78);
+      box-shadow: 0 12px 28px rgba(70, 10, 8, .10);
+      font-weight: 900;
       letter-spacing: .03em;
       text-transform: uppercase;
       font-size: .76rem;
       margin-bottom: 1rem;
+      backdrop-filter: blur(6px);
     }
 
     h1 {
       margin: 0;
       font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
-      line-height: .88;
+      line-height: .86;
       color: var(--vino);
       text-wrap: balance;
-      font-size: clamp(3.2rem, 8vw, 6.8rem);
-      letter-spacing: -.035em;
-      text-shadow: 0 7px 18px rgba(126, 23, 20, .10);
+      font-size: clamp(3.1rem, 7.6vw, 6.6rem);
+      letter-spacing: -.03em;
+      text-shadow: 0 9px 20px rgba(125, 23, 18, .12);
     }
 
-    h1 span {
+    h1 .small-title {
+      display: block;
+      font-size: .55em;
+      font-style: italic;
+      letter-spacing: .01em;
+      color: #7b2615;
+      transform: rotate(-1deg);
+      margin-bottom: .08em;
+    }
+
+    h1 span:last-child {
       display: block;
       color: var(--rojo);
       font-style: italic;
-      transform: rotate(-1.5deg);
-      letter-spacing: -.025em;
+      transform: rotate(-1.6deg);
+      letter-spacing: -.018em;
+    }
+
+    .home-stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      margin: .8rem 0 0;
+      padding: .4rem .75rem;
+      color: var(--vino);
+      border-top: 2px solid rgba(178, 43, 32, .45);
+      border-bottom: 2px solid rgba(178, 43, 32, .45);
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      transform: rotate(-1deg);
+      background: rgba(255, 248, 236, .48);
     }
 
     .subhead {
-      max-width: 580px;
-      margin: 1.4rem 0 1.2rem;
-      font-size: clamp(1rem, 1.8vw, 1.22rem);
+      max-width: 560px;
+      margin: 1.35rem 0 1.1rem;
+      font-size: clamp(1rem, 1.6vw, 1.14rem);
       line-height: 1.7;
-      color: #4e2a1f;
+      color: #4f2a1e;
+      background: rgba(255, 250, 240, .46);
+      border-radius: 20px;
+      padding: .9rem 1rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .limit-stamp {
+      display: inline-grid;
+      place-items: center;
+      text-align: center;
+      margin-top: .3rem;
+      padding: .85rem 1.3rem;
+      border-radius: 20px;
+      color: var(--vino);
+      background: rgba(255, 250, 240, .78);
+      border: 1px dashed rgba(125, 23, 18, .35);
+      box-shadow: var(--sombra-suave);
+      font-weight: 900;
+    }
+
+    .limit-stamp small {
+      font-weight: 700;
+      color: #5b2f19;
     }
 
     .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .65rem;
-      margin: 1.5rem 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+      margin: 1.35rem 0;
+      max-width: 520px;
     }
 
     .badge {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      padding: .75rem .95rem;
-      border-radius: 999px;
-      background: rgba(255, 250, 241, .86);
-      border: 1px solid var(--borde);
+      gap: .7rem;
+      padding: .86rem .95rem;
+      border-radius: 18px;
+      background: rgba(255, 250, 241, .82);
+      border: 1px solid rgba(125, 23, 18, .14);
       box-shadow: var(--sombra-suave);
       font-weight: 800;
       color: var(--vino-oscuro);
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(5px);
+    }
+
+    .badge span:first-child,
+    .ribbon-item .icon {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #fff9ec, #f8d7ad);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 12px 20px rgba(70,10,8,.16);
     }
 
     .cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: .8rem;
+      gap: .85rem;
       align-items: center;
-      margin-top: 1.5rem;
+      margin-top: 1.4rem;
     }
 
     .btn {
@@ -172,24 +271,81 @@
     }
 
     .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--whatsapp); color: white; box-shadow: 0 16px 30px rgba(24, 181, 74, .28); }
-    .btn-secondary { background: #fffaf1; color: var(--vino); border: 1px solid var(--borde); }
+    .btn-primary { background: var(--whatsapp); color: white; box-shadow: 0 16px 34px rgba(24, 181, 74, .30); }
+    .btn-secondary { background: rgba(255,250,241,.9); color: var(--vino); border: 1px solid var(--borde); box-shadow: 0 12px 28px rgba(70,10,8,.08); }
 
     .price-card {
-      display: inline-grid;
-      place-items: center;
-      min-width: 130px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: linear-gradient(145deg, var(--vino), #3f0a08);
-      color: white;
-      border: 4px solid #fff1db;
-      box-shadow: var(--sombra);
-      transform: rotate(4deg);
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: .9rem;
+      min-width: 240px;
+      min-height: 94px;
+      padding: .9rem 1.3rem .9rem .95rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #5b0e0a 0%, #8e1f17 48%, #4b0907 100%);
+      color: #fff8ef;
+      border: 3px solid #fae8cb;
+      box-shadow: 0 18px 34px rgba(70,10,8,.28), inset 0 1px 0 rgba(255,255,255,.22);
+      overflow: hidden;
     }
 
-    .price-card strong { font-size: 2.8rem; line-height: 1; }
-    .price-card small { font-weight: 800; }
+    .price-card::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: inherit;
+      border: 1px dashed rgba(255, 241, 220, .42);
+      pointer-events: none;
+    }
+
+    .price-icon {
+      position: relative;
+      z-index: 1;
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 245, 229, .14);
+      border: 1px solid rgba(255, 246, 234, .38);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.16);
+      font-size: 1.35rem;
+    }
+
+    .price-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1;
+    }
+
+    .price-card strong {
+      font-size: 2.65rem;
+      line-height: .92;
+      letter-spacing: -.05em;
+      text-shadow: 0 3px 12px rgba(0,0,0,.18);
+    }
+
+    .price-card small {
+      font-weight: 800;
+      font-size: .9rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-top: .12rem;
+    }
+
+    .price-note {
+      margin-top: .32rem;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+      color: #ffe8c7;
+      opacity: .95;
+    }
 
     .hero-art {
       position: relative;
@@ -199,44 +355,37 @@
       isolation: isolate;
     }
 
-    .hero-art .bg-photo {
-      position: absolute;
-      inset: 3rem 0 0 1rem;
-      width: 94%;
-      height: 72%;
-      object-fit: cover;
-      border-radius: var(--radius);
-      box-shadow: var(--sombra-img);
-      filter: saturate(1.08) contrast(1.04);
-      z-index: -2;
-    }
-
-    .hero-art::before {
-      content: "";
-      position: absolute;
-      inset: 3rem 0 0 1rem;
-      border-radius: var(--radius);
-      background: linear-gradient(90deg, rgba(74,13,11,.22), rgba(74,13,11,.03));
-      z-index: -1;
-    }
-
     .cook {
-      width: min(98%, 550px);
-      filter: drop-shadow(0 26px 28px rgba(74, 13, 11, .30));
-      transform: translateY(1rem);
+      width: min(105%, 620px);
+      filter: drop-shadow(0 28px 28px rgba(70, 10, 8, .34));
+      transform: translate(1rem, 2.4rem);
       will-change: transform;
+      z-index: 2;
+    }
+
+    .hero-note {
+      position: absolute;
+      right: .4rem;
+      top: 2rem;
+      color: #fff8ef;
+      font-family: "DM Serif Display", Georgia, serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+      text-align: center;
+      text-shadow: 0 2px 12px rgba(70,10,8,.5);
+      transform: rotate(-3deg);
+      z-index: 3;
     }
 
     .ribbon {
-      background: transparent;
+      max-width: 1180px;
+      margin: 1rem auto 0;
+      padding: 0 1.25rem;
       color: var(--vino-oscuro);
-      padding: 1rem 1.25rem 0;
-      box-shadow: none;
+      background: transparent;
     }
 
     .ribbon-grid {
-      max-width: 1180px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
@@ -247,29 +396,18 @@
       place-items: center;
       text-align: center;
       gap: .75rem;
-      font-weight: 850;
-      padding: 1.15rem .9rem;
       min-height: 150px;
-      border-radius: 24px;
+      padding: 1.2rem .85rem;
+      border-radius: 26px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,250,241,.92)),
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,250,241,.95)),
         #fffaf1;
-      border: 1px solid var(--borde);
+      border: 1px solid rgba(125, 23, 18, .14);
       box-shadow: var(--sombra-suave);
+      font-weight: 900;
     }
 
-    .ribbon-item .icon {
-      display: grid;
-      place-items: center;
-      width: 58px;
-      height: 58px;
-      border-radius: 20px;
-      background: linear-gradient(145deg, #fff8eb, #ffe4ba);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.9),
-        0 12px 22px rgba(74, 13, 11, .16);
-      font-size: 1.85rem;
-    }
+    .ribbon-item span:last-child { line-height: 1.25; }
 
     section {
       max-width: 1180px;
@@ -281,60 +419,76 @@
       text-align: center;
       font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
       color: var(--vino);
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      line-height: 1.02;
+      font-size: clamp(2.2rem, 5vw, 3.7rem);
       margin: 0 0 1.5rem;
       letter-spacing: -.015em;
-      text-shadow: 0 8px 18px rgba(126, 23, 20, .08);
+      text-shadow: 0 8px 16px rgba(125, 23, 18, .08);
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "✦";
+      display: inline-block;
+      color: var(--chile);
+      font-size: .45em;
+      margin: 0 .45rem;
+      vertical-align: middle;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 1.1rem;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 1.2rem;
       align-items: stretch;
     }
 
     .gallery-card,
     .note-card,
     .order-card {
-      background: rgba(255, 250, 241, .88);
-      border: 1px solid var(--borde);
+      background: rgba(255, 250, 241, .9);
+      border: 1px solid rgba(125, 23, 18, .15);
       border-radius: var(--radius);
       box-shadow: var(--sombra-suave);
       overflow: hidden;
     }
 
-    .gallery-card {
-      box-shadow: var(--sombra-img);
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      min-height: 360px;
-      filter: saturate(1.06) contrast(1.03);
-    }
+    .gallery-card { box-shadow: var(--sombra-img); }
+    .gallery-card img { width: 100%; height: 100%; object-fit: cover; min-height: 380px; filter: saturate(1.08) contrast(1.04); }
     .note-card {
-      padding: clamp(1.2rem, 3vw, 2rem);
+      padding: clamp(1.35rem, 3vw, 2.2rem);
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 1rem;
+      text-align: center;
+      background:
+        radial-gradient(circle at top, rgba(242, 179, 95, .16), transparent 17rem),
+        rgba(255, 250, 241, .94);
     }
 
     .note-card h3 {
       margin: 0;
       color: var(--vino);
-      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
       font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
+      line-height: 1.05;
     }
 
-    .note-card p { margin: 0; line-height: 1.7; font-size: 1.05rem; }
+    .note-card p { margin: 0; line-height: 1.75; font-size: 1.02rem; }
+
+    .status-note {
+      background: #fff1dc;
+      color: #5f2615;
+      border: 1px dashed rgba(126,23,20,.38);
+      border-radius: 18px;
+      padding: .95rem;
+      line-height: 1.55;
+      font-weight: 800;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.70);
+    }
 
     .order-wrap { padding-top: 1rem; }
-    .order-card { padding: clamp(1rem, 2.7vw, 1.6rem); }
+    .order-card { padding: clamp(1rem, 2.7vw, 1.7rem); }
 
     .form-grid {
       display: grid;
@@ -343,11 +497,11 @@
     }
 
     .field {
-      background: rgba(255, 255, 255, .58);
-      border: 1px solid var(--borde);
-      border-radius: 20px;
+      background: rgba(255, 255, 255, .62);
+      border: 1px solid rgba(125, 23, 18, .16);
+      border-radius: 22px;
       padding: 1rem;
-      box-shadow: 0 10px 24px rgba(126, 23, 20, .06);
+      box-shadow: 0 10px 24px rgba(70,10,8,.06);
     }
 
     .col-3 { grid-column: span 3; }
@@ -372,7 +526,7 @@
     textarea {
       width: 100%;
       border: 1px solid rgba(126,23,20,.22);
-      border-radius: 14px;
+      border-radius: 15px;
       background: #fffaf2;
       color: var(--texto);
       font: inherit;
@@ -396,6 +550,7 @@
       overflow: hidden;
       border: 1px solid rgba(126,23,20,.18);
       background: #fffaf2;
+      box-shadow: 0 10px 24px rgba(70,10,8,.06);
     }
 
     .qty button {
@@ -421,10 +576,7 @@
       background: #fffaf2;
     }
 
-    .delivery-options {
-      display: grid;
-      gap: .65rem;
-    }
+    .delivery-options { display: grid; gap: .65rem; }
 
     .delivery-option {
       display: flex;
@@ -439,7 +591,6 @@
       cursor: pointer;
       font-weight: 850;
       color: var(--texto);
-      box-shadow: 0 8px 18px rgba(126, 23, 20, .06);
     }
 
     .delivery-option.active {
@@ -465,16 +616,6 @@
       margin-top: .5rem;
     }
 
-    .status-note {
-      background: #fff1dc;
-      color: #5f2615;
-      border: 1px dashed rgba(126,23,20,.35);
-      border-radius: 16px;
-      padding: .9rem;
-      line-height: 1.55;
-      font-weight: 700;
-    }
-
     .summary {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -493,7 +634,7 @@
     .form-error {
       width: 100%;
       max-width: 720px;
-      margin: 0 auto .35rem;
+      margin: 1rem auto .35rem;
       padding: 1rem 1.1rem;
       border-radius: 20px;
       background: #fff3e8;
@@ -505,11 +646,7 @@
       text-align: left;
     }
 
-    .form-error strong {
-      display: block;
-      margin-bottom: .2rem;
-      font-size: 1.02rem;
-    }
+    .form-error strong { display: block; margin-bottom: .2rem; font-size: 1.02rem; }
 
     .input-error {
       border-color: #b3261e !important;
@@ -531,84 +668,103 @@
     }
 
     .send-row .btn-primary {
-      width: min(100%, 520px);
+      width: min(100%, 540px);
       font-size: clamp(1rem, 2vw, 1.35rem);
-      padding: 1.05rem 1.4rem;
+      padding: 1.1rem 1.4rem;
     }
 
     .footer {
       text-align: center;
       color: #fff6e8;
-      background: linear-gradient(90deg, var(--vino-oscuro), var(--vino));
-      padding: 1.2rem;
-      font-weight: 800;
+      background: linear-gradient(90deg, var(--vino-oscuro), var(--vino), var(--rojo));
+      padding: 1.35rem;
+      font-weight: 900;
+      box-shadow: 0 -16px 34px rgba(70,10,8,.12);
     }
 
     .hidden { display: none !important; }
 
     @media (max-width: 980px) {
-      .hero { grid-template-columns: 1fr; padding-top: 2rem; }
+      .hero { padding: 0 1rem; }
+      .hero-shell { grid-template-columns: 1fr; padding: 1.4rem; min-height: auto; gap: 0; }
       .hero-art { min-height: 430px; order: -1; }
-      .hero-art .bg-photo { height: 66%; inset: .75rem 0 0 0; width: 100%; }
-      .hero-art::before { inset: .75rem 0 0 0; }
-      .cook { width: min(94%, 460px); transform: translateY(.4rem); }
+      .cook { width: min(96%, 480px); transform: translateY(2.1rem); }
+      .hero-note { top: 1rem; right: 1rem; font-size: 1.2rem; }
+      .badges { grid-template-columns: 1fr; }
       .ribbon-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery { grid-template-columns: 1fr; }
       .col-3, .col-4, .col-5, .col-6, .col-7, .col-8 { grid-column: span 12; }
     }
 
     @media (max-width: 620px) {
-      .hero { padding-inline: 1rem; }
-      h1 { font-size: clamp(3rem, 15.5vw, 4.7rem); }
-      .badges { align-items: stretch; }
-      .badge { width: 100%; justify-content: center; }
+      .hero { padding-inline: .85rem; }
+      .hero-shell { border-radius: 30px; padding: 1.05rem; }
+      .hero-art { min-height: 360px; }
+      .cook { width: min(108%, 440px); transform: translateY(1.6rem); }
+      .hero-note { display: none; }
+      h1 { font-size: clamp(3.25rem, 17vw, 5.3rem); }
+      .subhead { padding: .85rem; }
       .cta-row .btn { width: 100%; }
-      .price-card { min-width: 112px; }
+      .price-card { min-width: min(100%, 240px); width: auto; justify-content: center; }
+      .price-note { text-align: left; }
+      .ribbon { padding-inline: 1rem; }
       .ribbon-grid { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
-      .ribbon-item { min-height: 128px; padding: 1rem .7rem; }
+      .ribbon-item { min-height: 124px; padding: 1rem .7rem; }
+      .ribbon-item .icon { width: 44px; height: 44px; }
       section { padding: 2.2rem 1rem; }
+      .gallery-card img { min-height: 330px; }
       .order-card { border-radius: 22px; }
       .field { padding: .9rem; border-radius: 18px; }
     }
 
     @media (max-width: 390px) {
       .ribbon-grid { grid-template-columns: 1fr; }
-      .hero-art { min-height: 400px; }
-      .cook { width: min(100%, 430px); }
+      .hero-art { min-height: 330px; }
     }
-
   </style>
 </head>
 <body>
   <main class="page">
     <header class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow">🌶️ Tanda semanal · Piezas limitadas</div>
-        <h1>Salsa Macha <span>La Poblanita</span></h1>
-        <p class="subhead">
-          Salsa macha casera preparada en pequeñas cantidades, con sabor intenso,
-          textura crujiente y el toque perfecto para tus comidas.
-        </p>
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <div class="eyebrow">🌶️ Tanda semanal · Piezas limitadas</div>
+          <h1><span class="small-title">Salsa Macha</span><span>La Poblanita</span></h1>
+          <div class="home-stamp">Hecha en casa con amor ♥</div>
+          <p class="subhead">
+            Salsa macha casera preparada en pequeñas cantidades, con sabor intenso,
+            textura crujiente y el toque perfecto para tus comidas.
+          </p>
+          <div class="limit-stamp">
+            Piezas limitadas
+            <small>por tanda semanal</small>
+          </div>
 
-        <div class="badges">
-          <div class="badge">🥄 Crujiente y sabrosa</div>
-          <div class="badge">🏡 Hecha en casa</div>
-          <div class="badge">🫙 Frasco de 125 ml aprox.</div>
-        </div>
+          <div class="badges">
+            <div class="badge"><span>🥄</span> Crujiente y sabrosa</div>
+            <div class="badge"><span>🏡</span> Hecha en casa</div>
+            <div class="badge"><span>🫙</span> Frasco de 125 ml aprox.</div>
+            <div class="badge"><span>🌶️</span> Ingredientes seleccionados</div>
+          </div>
 
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#pedido">📲 Apartar por WhatsApp</a>
-          <a class="btn btn-secondary" href="#salsa">Ver detalles</a>
-          <div class="price-card" aria-label="Precio 25 pesos por frasco">
-            <strong>$25</strong>
-            <small>por frasco</small>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#pedido">📲 Apartar por WhatsApp</a>
+            <a class="btn btn-secondary" href="#salsa">Ver detalles</a>
+            <div class="price-card" aria-label="Precio 25 pesos por frasco">
+              <span class="price-icon" aria-hidden="true">🏷️</span>
+              <span class="price-content">
+                <strong>$25</strong>
+                <small>por frasco</small>
+                <span class="price-note">Precio casero de la semana</span>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="hero-art" aria-hidden="true">
-        <img class="bg-photo" src="assets/salsa-macha-portada.png" alt="Salsa macha casera en frasco con ingredientes" />
-        <img class="cook" src="assets/cocinera-salsa-macha.png" alt="Cocinera mostrando salsa macha casera" />
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-note">Hecha en casa,<br>como debe ser ♡</div>
+          <img class="cook" src="assets/cocinera-salsa-macha.png" alt="Cocinera mostrando salsa macha casera" />
+        </div>
       </div>
     </header>
 
@@ -622,7 +778,7 @@
     </div>
 
     <section aria-labelledby="detalles-title">
-      <h2 class="section-title" id="detalles-title">Sabor de casa, hecho por tanda</h2>
+      <h2 class="section-title" id="detalles-title">Nuestra salsa macha</h2>
       <div class="gallery">
         <div class="gallery-card">
           <img src="assets/salsa-macha-portada.png" alt="Frasco de salsa macha casera sobre mesa rústica" />
@@ -682,10 +838,10 @@
             <span class="label">4. Elige un punto cercano</span>
             <div class="choice-list">
               <label class="radio-line"><input type="radio" name="pickupPoint" value="Casa de Cultura" checked /> Casa de Cultura</label>
-              <label class="radio-line"><input type="radio" name="pickupPoint" value="Iglesia de Santa María" /> Iglesia de Santa María</label>
+              <label class="radio-line"><input type="radio" name="pickupPoint" value="Iglesia de Ocoyoacac o Santa María" /> Iglesia de Ocoyoacac o Santa María</label>
               <label class="radio-line"><input type="radio" name="pickupPoint" value="Bodega Aurrera" /> Bodega Aurrera</label>
               <label class="radio-line"><input type="radio" name="pickupPoint" value="Semáforo del centro de Ocoyoacac" /> Semáforo del centro de Ocoyoacac</label>
-              <label class="radio-line"><input type="radio" name="pickupPoint" value="Semáforo del panteón" /> Semáforo del panteón</label>              
+              <label class="radio-line"><input type="radio" name="pickupPoint" value="Semáforo del panteón de Ocoyoacac" /> Semáforo del panteón de Ocoyoacac</label>              
               <label class="radio-line"><input type="radio" name="pickupPoint" value="OXXO del centro de Ocoyoacac" /> OXXO del centro de Ocoyoacac</label>
             </div>
           </div>
@@ -739,7 +895,7 @@
   </main>
 
   <footer class="footer">
-    Gracias por apoyar lo hecho en casa · Salsa Macha La Poblanita
+    Gracias por apoyar lo hecho en casa · Salsa Macha "La Poblanita"
   </footer>
 
   <script>
