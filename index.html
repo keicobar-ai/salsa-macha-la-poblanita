@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salsa Macha La Poblanita | Pedido por WhatsApp</title>
-  <meta name="description" content="Salsa Macha La Poblanita, salsa macha casera preparada por tanda semanal. Aparta la tuya por WhatsApp." />
+  <meta name="description" content="Salsa Macha La Poblanita, salsa macha casera preparada por preparación semanal. Aparta la tuya por WhatsApp." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -487,8 +487,92 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,.70);
     }
 
-    .order-wrap { padding-top: 1rem; }
-    .order-card { padding: clamp(1rem, 2.7vw, 1.7rem); }
+    .order-wrap {
+      padding-top: 1.4rem;
+      scroll-margin-top: 1rem;
+    }
+
+    .how-to-order {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(280px, .75fr);
+      gap: 1rem;
+      align-items: stretch;
+      margin: 0 auto 1.25rem;
+    }
+
+    .how-card,
+    .help-card {
+      border-radius: 28px;
+      border: 1px solid rgba(125, 23, 18, .16);
+      background: rgba(255, 250, 241, .94);
+      box-shadow: var(--sombra-suave);
+      padding: clamp(1rem, 2.5vw, 1.45rem);
+    }
+
+    .how-card h3,
+    .help-card h3 {
+      margin: 0 0 .85rem;
+      font-family: "DM Serif Display", Georgia, serif;
+      color: var(--vino);
+      font-size: clamp(1.65rem, 3vw, 2.2rem);
+      line-height: 1;
+    }
+
+    .steps {
+      display: grid;
+      gap: .75rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: .75rem;
+      align-items: center;
+      padding: .85rem;
+      border-radius: 18px;
+      background: #fff4df;
+      border: 1px solid rgba(125, 23, 18, .11);
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .step-number {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: #fff8ef;
+      background: linear-gradient(135deg, var(--vino), var(--rojo));
+      box-shadow: 0 10px 20px rgba(70,10,8,.18);
+      font-weight: 900;
+    }
+
+    .help-card {
+      display: grid;
+      align-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at top, rgba(242, 179, 95, .18), transparent 13rem),
+        rgba(255, 250, 241, .96);
+    }
+
+    .help-card p {
+      margin: .2rem 0 0;
+      color: #5b2f19;
+      font-weight: 700;
+      line-height: 1.6;
+      font-size: 1.02rem;
+    }
+
+    .order-card {
+      padding: clamp(1rem, 2.7vw, 1.7rem);
+      border: 2px solid rgba(125, 23, 18, .20);
+      box-shadow: 0 22px 48px rgba(70,10,8,.16);
+    }
 
     .form-grid {
       display: grid;
@@ -518,7 +602,7 @@
       color: var(--vino);
       font-weight: 900;
       margin-bottom: .55rem;
-      font-size: .95rem;
+      font-size: 1.04rem;
     }
 
     input,
@@ -530,7 +614,7 @@
       background: #fffaf2;
       color: var(--texto);
       font: inherit;
-      padding: .95rem 1rem;
+      padding: 1.05rem 1rem;
       outline: none;
       transition: border .2s ease, box-shadow .2s ease;
     }
@@ -669,8 +753,8 @@
 
     .send-row .btn-primary {
       width: min(100%, 540px);
-      font-size: clamp(1rem, 2vw, 1.35rem);
-      padding: 1.1rem 1.4rem;
+      font-size: clamp(1.08rem, 2.3vw, 1.45rem);
+      padding: 1.2rem 1.45rem;
     }
 
     .footer {
@@ -691,6 +775,7 @@
       .cook { width: min(96%, 480px); transform: translateY(2.1rem); }
       .hero-note { top: 1rem; right: 1rem; font-size: 1.2rem; }
       .badges { grid-template-columns: 1fr; }
+      .how-to-order { grid-template-columns: 1fr; }
       .ribbon-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery { grid-template-columns: 1fr; }
       .col-3, .col-4, .col-5, .col-6, .col-7, .col-8 { grid-column: span 12; }
@@ -728,7 +813,7 @@
     <header class="hero">
       <div class="hero-shell">
         <div class="hero-copy">
-          <div class="eyebrow">🌶️ Tanda semanal · Piezas limitadas</div>
+          <div class="eyebrow">🌶️ Preparación semanal · Piezas limitadas</div>
           <h1><span class="small-title">Salsa Macha</span><span>La Poblanita</span></h1>
           <div class="home-stamp">Hecha en casa con amor ♥</div>
           <p class="subhead">
@@ -737,25 +822,25 @@
           </p>
           <div class="limit-stamp">
             Piezas limitadas
-            <small>por tanda semanal</small>
+            <small>por preparación semanal</small>
           </div>
 
           <div class="badges">
             <div class="badge"><span>🥄</span> Crujiente y sabrosa</div>
             <div class="badge"><span>🏡</span> Hecha en casa</div>
-            <div class="badge"><span>🫙</span> Frasco de 125 ml aprox.</div>
+            <div class="badge"><span>🫙</span> Vaso 4A · aprox. 115 ml</div>
             <div class="badge"><span>🌶️</span> Ingredientes seleccionados</div>
           </div>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="#pedido">📲 Apartar por WhatsApp</a>
+            <a class="btn btn-primary" href="#pedido">👉 Pica aquí para hacer tu pedido</a>
             <a class="btn btn-secondary" href="#salsa">Ver detalles</a>
-            <div class="price-card" aria-label="Precio 25 pesos por frasco">
+            <div class="price-card" aria-label="Precio 30 pesos por vaso">
               <span class="price-icon" aria-hidden="true">🏷️</span>
               <span class="price-content">
-                <strong>$25</strong>
-                <small>por frasco</small>
-                <span class="price-note">Precio casero de la semana</span>
+                <strong>$30</strong>
+                <small>por vaso</small>
+                <span class="price-note">Precio por vaso</span>
               </span>
             </div>
           </div>
@@ -768,63 +853,50 @@
       </div>
     </header>
 
-    <div class="ribbon" id="salsa">
-      <div class="ribbon-grid">
-        <div class="ribbon-item"><span class="icon">🌶️</span><span>Ingredientes seleccionados</span></div>
-        <div class="ribbon-item"><span class="icon">🥜</span><span>Textura crujiente</span></div>
-        <div class="ribbon-item"><span class="icon">🫙</span><span>Frasco 125 ml aprox.</span></div>
-        <div class="ribbon-item"><span class="icon">🏠</span><span>Producto casero</span></div>
-      </div>
-    </div>
-
-    <section aria-labelledby="detalles-title">
-      <h2 class="section-title" id="detalles-title">Nuestra salsa macha</h2>
-      <div class="gallery">
-        <div class="gallery-card">
-          <img src="assets/salsa-macha-portada.png" alt="Frasco de salsa macha casera sobre mesa rústica" />
-        </div>
-        <div class="note-card">
-          <h3>Producto casero preparado por tanda semanal</h3>
-          <p>
-            La disponibilidad es limitada hasta agotar existencia. Cada pedido se confirma por WhatsApp,
-            así podemos acordar entrega, horario y cualquier detalle especial.
-          </p>
-          <p>
-            Ideal para tacos, quesadillas, huevos, carnes, sopas, antojitos o para darle carácter a la comida del día.
-          </p>
-          <div class="status-note">Piezas limitadas por tanda semanal. Aparta la tuya antes de que se acabe.</div>
-        </div>
-      </div>
-    </section>
-
     <section class="order-wrap" id="pedido" aria-labelledby="pedido-title">
-      <h2 class="section-title" id="pedido-title">Aparta tu salsa macha</h2>
+      <h2 class="section-title" id="pedido-title">Haz tu pedido aquí</h2>
+      <div class="how-to-order" aria-label="Instrucciones para hacer el pedido">
+        <div class="how-card">
+          <h3>¿Cómo hacer tu pedido?</h3>
+          <ul class="steps">
+            <li><span class="step-number">1</span><span>Elige cuántos vasos quieres.</span></li>
+            <li><span class="step-number">2</span><span>Escribe tu nombre y tu teléfono.</span></li>
+            <li><span class="step-number">3</span><span>Selecciona si recoges o quieres entrega a domicilio.</span></li>
+            <li><span class="step-number">4</span><span>Pica el botón verde para mandar tu pedido por WhatsApp.</span></li>
+          </ul>
+        </div>
+        <div class="help-card">
+          <h3>Importante</h3>
+          <p>No se cobra en esta página. Solo se manda tu pedido por WhatsApp para confirmar disponibilidad y entrega.</p>
+          <p>Se abrirá tu Whatsapp en un chat, donde ya estará lista la información para enviar tu orden, envíalo como un mensaje normal y lo recibiremos de inmediato.</p>
+        </div>
+      </div>
       <form class="order-card" id="orderForm">
         <div class="form-grid">
           <div class="field col-3">
-            <span class="label">1. ¿Cuántos frascos quieres?</span>
+            <span class="label">Paso 1. ¿Cuántos vasos quieres?</span>
             <div class="qty" aria-label="Cantidad de frascos">
-              <button type="button" id="minusBtn" aria-label="Restar frasco">−</button>
+              <button type="button" id="minusBtn" aria-label="Restar vaso">−</button>
               <input id="quantity" name="quantity" type="number" value="1" min="1" max="30" inputmode="numeric" />
-              <button type="button" id="plusBtn" aria-label="Agregar frasco">+</button>
+              <button type="button" id="plusBtn" aria-label="Agregar vaso">+</button>
             </div>
-            <div class="hint">125 ml aprox., puede variar.</div>
+            <div class="hint">Vaso 4A, aprox. 115 ml. Puede variar un poco.</div>
             <div class="summary">
               <span>Total estimado</span>
-              <strong id="total">$25</strong>
+              <strong id="total">$30</strong>
             </div>
           </div>
 
           <div class="field col-4">
-            <label for="name">2. Tu nombre</label>
+            <label for="name">Paso 2. Tu nombre</label>
             <input id="name" name="name" type="text" placeholder="Nombre completo" autocomplete="name" required />
             <br /><br />
-            <label for="phone">Teléfono / WhatsApp</label>
+            <label for="phone">Tu teléfono / WhatsApp</label>
             <input id="phone" name="phone" type="tel" placeholder="Ej. 729 000 0000" autocomplete="tel" required />
           </div>
 
           <div class="field col-5">
-            <span class="label">3. ¿Cómo quieres recibir tu pedido?</span>
+            <span class="label">Paso 3. ¿Cómo quieres recibir tu pedido?</span>
             <div class="delivery-options" role="group" aria-label="Forma de entrega">
               <button class="delivery-option active" type="button" data-delivery="Recoger en punto cercano">📍 Recoger en punto cercano</button>
               <button class="delivery-option" type="button" data-delivery="Entrega a domicilio">🏠 Entrega a domicilio</button>
@@ -835,7 +907,7 @@
           </div>
 
           <div class="field col-6" id="pickupBox">
-            <span class="label">4. Elige un punto cercano</span>
+            <span class="label">Paso 4. Elige un punto cercano</span>
             <div class="choice-list">
               <label class="radio-line"><input type="radio" name="pickupPoint" value="Casa de Cultura" checked /> Casa de Cultura</label>
               <label class="radio-line"><input type="radio" name="pickupPoint" value="Iglesia de Ocoyoacac o Santa María" /> Iglesia de Ocoyoacac o Santa María</label>
@@ -847,7 +919,7 @@
           </div>
 
           <div class="field col-6 hidden" id="homeBox">
-            <span class="label">4. Entrega a domicilio</span>
+            <span class="label">Paso 4. Entrega a domicilio</span>
             <div class="choice-list">
               <label class="radio-line"><input type="radio" name="homeZone" value="Zona centro de Ocoyoacac" checked /> Zona centro de Ocoyoacac</label>
               <label class="radio-line"><input type="radio" name="homeZone" value="Consultar si mi domicilio aplica" /> Consultar si mi domicilio aplica</label>
@@ -859,14 +931,14 @@
           </div>
 
           <div class="field col-6 hidden" id="agreeBox">
-            <span class="label">4. Punto a acordar</span>
+            <span class="label">Paso 4. Punto a acordar</span>
             <div class="status-note">
               Se enviará el pedido por WhatsApp y ahí se acordará el punto de entrega.
             </div>
           </div>
 
           <div class="field col-6">
-            <label for="timeSlot">5. Horario preferido</label>
+            <label for="timeSlot">Paso 5. Horario preferido</label>
             <select id="timeSlot" required>
               <option value="">Selecciona un horario</option>
               <option>Mañana: 10:00 am a 12:00 pm</option>
@@ -879,7 +951,7 @@
           </div>
 
           <div class="field col-12">
-            <label for="notes">6. Mensaje adicional <span style="font-weight:600; color:#795044;">(opcional)</span></label>
+            <label for="notes">Mensaje adicional <span style="font-weight:600; color:#795044;">(opcional)</span></label>
             <textarea id="notes" placeholder="Ej. referencias, instrucciones, comentarios, etc."></textarea>
           </div>
         </div>
@@ -887,11 +959,41 @@
         <div id="formError" class="form-error hidden" role="alert" aria-live="assertive"></div>
 
         <div class="send-row">
-          <button class="btn btn-primary" type="submit">🟢 Enviar pedido por WhatsApp</button>
+          <button class="btn btn-primary" type="submit">📲 Pica aquí para mandar tu pedido por WhatsApp</button>
           <small>🔒 Tu información solo se usará para coordinar tu pedido.</small>
         </div>
       </form>
     </section>
+
+    <div class="ribbon" id="salsa">
+      <div class="ribbon-grid">
+        <div class="ribbon-item"><span class="icon">🌶️</span><span>Ingredientes seleccionados</span></div>
+        <div class="ribbon-item"><span class="icon">🥜</span><span>Textura crujiente</span></div>
+        <div class="ribbon-item"><span class="icon">🫙</span><span>Vaso 4A · aprox. 100 ml</span></div>
+        <div class="ribbon-item"><span class="icon">🏠</span><span>Producto casero</span></div>
+      </div>
+    </div>
+
+    <section aria-labelledby="detalles-title">
+      <h2 class="section-title" id="detalles-title">Nuestra salsa macha</h2>
+      <div class="gallery">
+        <div class="gallery-card">
+          <img src="assets/salsa-macha-portada.png" alt="Frasco de salsa macha casera sobre mesa rústica" />
+        </div>
+        <div class="note-card">
+          <h3>Producto casero preparado por semana</h3>
+          <p>
+            La disponibilidad es limitada hasta agotar existencia. Cada pedido se confirma por WhatsApp,
+            así podemos acordar entrega, horario y cualquier detalle especial.
+          </p>
+          <p>
+            Ideal para tacos, quesadillas, huevos, carnes, sopas, antojitos o para darle carácter a la comida del día.
+          </p>
+          <div class="status-note">Piezas limitadas por preparación semanal. Aparta la tuya antes de que se acabe.</div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
@@ -900,7 +1002,7 @@
 
   <script>
     const WHATSAPP_NUMBER = "527293736820";
-    const PRICE = 25;
+    const PRICE = 30;
 
     const quantity = document.getElementById("quantity");
     const total = document.getElementById("total");
@@ -977,18 +1079,18 @@
       }
 
       return [
-        "Hola, quiero apartar Salsa Macha La Poblanita.",
+        "Hola, quiero pedir Salsa Macha La Poblanita.",
         "",
         `Nombre: ${name}`,
         `Teléfono: ${phone}`,
-        `Cantidad: ${qty} frasco(s) de 125 ml aprox.`,
+        `Cantidad: ${qty} vaso(s) 4A de aprox. 100 ml`,
         `Total estimado: $${qty * PRICE}`,
         `Forma de entrega: ${type}`,
         `Punto / zona: ${point}`,
         `Horario preferido: ${time}`,
         notes ? `Mensaje adicional: ${notes}` : "Mensaje adicional: Ninguno",
         "",
-        "Entiendo que el producto es casero, preparado por tanda semanal y sujeto a disponibilidad."
+        "Entiendo que el producto es casero, preparado por semana y sujeto a disponibilidad."
       ].join("\n");
     }
 
