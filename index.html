@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salsa Macha La Poblanita | Pedido por WhatsApp</title>
   <meta name="description" content="Salsa Macha La Poblanita, salsa macha casera preparada por tanda semanal. Aparta la tuya por WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --vino: #7e1714;
@@ -20,6 +23,8 @@
       --whatsapp: #18b54a;
       --borde: rgba(126, 23, 20, .18);
       --sombra: 0 22px 60px rgba(74, 13, 11, .18);
+      --sombra-suave: 0 14px 34px rgba(74, 13, 11, .13);
+      --sombra-img: 0 20px 45px rgba(74, 13, 11, .22);
       --radius: 28px;
     }
 
@@ -28,7 +33,7 @@
     body {
       margin: 0;
       color: var(--texto);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
         radial-gradient(circle at top left, rgba(255, 225, 177, .9), transparent 36rem),
         linear-gradient(180deg, #fff8ed 0%, #fff1dc 45%, #ffe6bf 100%);
@@ -51,6 +56,7 @@
     }
 
     img { max-width: 100%; display: block; }
+    .image-depth { box-shadow: var(--sombra-img); }
     a { color: inherit; }
 
     .page { min-height: 100vh; }
@@ -95,12 +101,13 @@
 
     h1 {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: .9;
+      font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
+      line-height: .88;
       color: var(--vino);
       text-wrap: balance;
-      font-size: clamp(3rem, 8vw, 6.6rem);
-      letter-spacing: -.05em;
+      font-size: clamp(3.2rem, 8vw, 6.8rem);
+      letter-spacing: -.035em;
+      text-shadow: 0 7px 18px rgba(126, 23, 20, .10);
     }
 
     h1 span {
@@ -108,6 +115,7 @@
       color: var(--rojo);
       font-style: italic;
       transform: rotate(-1.5deg);
+      letter-spacing: -.025em;
     }
 
     .subhead {
@@ -128,14 +136,16 @@
     .badge {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: .5rem;
       padding: .75rem .95rem;
       border-radius: 999px;
-      background: #fffaf1;
+      background: rgba(255, 250, 241, .86);
       border: 1px solid var(--borde);
-      box-shadow: 0 10px 30px rgba(126, 23, 20, .08);
+      box-shadow: var(--sombra-suave);
       font-weight: 800;
       color: var(--vino-oscuro);
+      backdrop-filter: blur(4px);
     }
 
     .cta-row {
@@ -196,8 +206,8 @@
       height: 72%;
       object-fit: cover;
       border-radius: var(--radius);
-      box-shadow: var(--sombra);
-      filter: saturate(1.05) contrast(1.04);
+      box-shadow: var(--sombra-img);
+      filter: saturate(1.08) contrast(1.04);
       z-index: -2;
     }
 
@@ -212,15 +222,16 @@
 
     .cook {
       width: min(98%, 550px);
-      filter: drop-shadow(0 24px 28px rgba(74, 13, 11, .25));
+      filter: drop-shadow(0 26px 28px rgba(74, 13, 11, .30));
       transform: translateY(1rem);
+      will-change: transform;
     }
 
     .ribbon {
-      background: linear-gradient(90deg, var(--vino-oscuro), var(--vino), var(--rojo));
-      color: white;
-      padding: 1rem 1.25rem;
-      box-shadow: 0 16px 40px rgba(74, 13, 11, .18);
+      background: transparent;
+      color: var(--vino-oscuro);
+      padding: 1rem 1.25rem 0;
+      box-shadow: none;
     }
 
     .ribbon-grid {
@@ -232,14 +243,33 @@
     }
 
     .ribbon-item {
-      display: flex;
-      align-items: center;
+      display: grid;
+      place-items: center;
+      text-align: center;
       gap: .75rem;
       font-weight: 850;
-      padding: .35rem 0;
+      padding: 1.15rem .9rem;
+      min-height: 150px;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,250,241,.92)),
+        #fffaf1;
+      border: 1px solid var(--borde);
+      box-shadow: var(--sombra-suave);
     }
 
-    .ribbon-item .icon { font-size: 1.75rem; }
+    .ribbon-item .icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #fff8eb, #ffe4ba);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.9),
+        0 12px 22px rgba(74, 13, 11, .16);
+      font-size: 1.85rem;
+    }
 
     section {
       max-width: 1180px;
@@ -249,10 +279,13 @@
 
     .section-title {
       text-align: center;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
       color: var(--vino);
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.02;
       margin: 0 0 1.5rem;
+      letter-spacing: -.015em;
+      text-shadow: 0 8px 18px rgba(126, 23, 20, .08);
     }
 
     .gallery {
@@ -268,11 +301,21 @@
       background: rgba(255, 250, 241, .88);
       border: 1px solid var(--borde);
       border-radius: var(--radius);
-      box-shadow: 0 18px 40px rgba(126, 23, 20, .10);
+      box-shadow: var(--sombra-suave);
       overflow: hidden;
     }
 
-    .gallery-card img { width: 100%; height: 100%; object-fit: cover; min-height: 360px; }
+    .gallery-card {
+      box-shadow: var(--sombra-img);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 360px;
+      filter: saturate(1.06) contrast(1.03);
+    }
     .note-card {
       padding: clamp(1.2rem, 3vw, 2rem);
       display: flex;
@@ -285,7 +328,7 @@
       margin: 0;
       color: var(--vino);
       font-size: clamp(1.4rem, 3vw, 2rem);
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
     }
 
     .note-card p { margin: 0; line-height: 1.7; font-size: 1.05rem; }
@@ -300,10 +343,11 @@
     }
 
     .field {
-      background: rgba(255, 255, 255, .55);
+      background: rgba(255, 255, 255, .58);
       border: 1px solid var(--borde);
       border-radius: 20px;
       padding: 1rem;
+      box-shadow: 0 10px 24px rgba(126, 23, 20, .06);
     }
 
     .col-3 { grid-column: span 3; }
@@ -395,6 +439,7 @@
       cursor: pointer;
       font-weight: 850;
       color: var(--texto);
+      box-shadow: 0 8px 18px rgba(126, 23, 20, .06);
     }
 
     .delivery-option.active {
@@ -445,6 +490,37 @@
 
     .summary strong { color: var(--vino); font-size: 1.25rem; }
 
+    .form-error {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto .35rem;
+      padding: 1rem 1.1rem;
+      border-radius: 20px;
+      background: #fff3e8;
+      border: 1px solid rgba(182, 43, 31, .36);
+      color: var(--vino);
+      font-weight: 850;
+      line-height: 1.45;
+      box-shadow: 0 16px 34px rgba(126, 23, 20, .14);
+      text-align: left;
+    }
+
+    .form-error strong {
+      display: block;
+      margin-bottom: .2rem;
+      font-size: 1.02rem;
+    }
+
+    .input-error {
+      border-color: #b3261e !important;
+      box-shadow: 0 0 0 4px rgba(179, 38, 30, .14) !important;
+    }
+
+    .field-error {
+      border-color: rgba(179, 38, 30, .55) !important;
+      box-shadow: 0 0 0 4px rgba(179, 38, 30, .08), 0 18px 40px rgba(126, 23, 20, .10) !important;
+    }
+
     .send-row {
       display: flex;
       flex-direction: column;
@@ -472,10 +548,10 @@
 
     @media (max-width: 980px) {
       .hero { grid-template-columns: 1fr; padding-top: 2rem; }
-      .hero-art { min-height: 420px; order: -1; }
-      .hero-art .bg-photo { height: 70%; inset: 1rem 0 0 0; width: 100%; }
-      .hero-art::before { inset: 1rem 0 0 0; }
-      .cook { width: min(92%, 480px); }
+      .hero-art { min-height: 430px; order: -1; }
+      .hero-art .bg-photo { height: 66%; inset: .75rem 0 0 0; width: 100%; }
+      .hero-art::before { inset: .75rem 0 0 0; }
+      .cook { width: min(94%, 460px); transform: translateY(.4rem); }
       .ribbon-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery { grid-template-columns: 1fr; }
       .col-3, .col-4, .col-5, .col-6, .col-7, .col-8 { grid-column: span 12; }
@@ -483,16 +559,24 @@
 
     @media (max-width: 620px) {
       .hero { padding-inline: 1rem; }
-      h1 { font-size: clamp(3rem, 17vw, 5rem); }
+      h1 { font-size: clamp(3rem, 15.5vw, 4.7rem); }
       .badges { align-items: stretch; }
       .badge { width: 100%; justify-content: center; }
       .cta-row .btn { width: 100%; }
       .price-card { min-width: 112px; }
-      .ribbon-grid { grid-template-columns: 1fr; }
+      .ribbon-grid { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+      .ribbon-item { min-height: 128px; padding: 1rem .7rem; }
       section { padding: 2.2rem 1rem; }
       .order-card { border-radius: 22px; }
       .field { padding: .9rem; border-radius: 18px; }
     }
+
+    @media (max-width: 390px) {
+      .ribbon-grid { grid-template-columns: 1fr; }
+      .hero-art { min-height: 400px; }
+      .cook { width: min(100%, 430px); }
+    }
+
   </style>
 </head>
 <body>
@@ -645,6 +729,8 @@
           </div>
         </div>
 
+        <div id="formError" class="form-error hidden" role="alert" aria-live="assertive"></div>
+
         <div class="send-row">
           <button class="btn btn-primary" type="submit">🟢 Enviar pedido por WhatsApp</button>
           <small>🔒 Tu información solo se usará para coordinar tu pedido.</small>
@@ -751,22 +837,104 @@
       ].join("\n");
     }
 
+    const formError = document.getElementById("formError");
+
+    function markField(element) {
+      if (!element) return;
+      element.classList.add("input-error");
+
+      const parentField = element.closest(".field");
+      if (parentField) parentField.classList.add("field-error");
+    }
+
+    function clearValidation() {
+      formError.classList.add("hidden");
+      formError.innerHTML = "";
+      document.querySelectorAll(".input-error").forEach((item) => item.classList.remove("input-error"));
+      document.querySelectorAll(".field-error").forEach((item) => item.classList.remove("field-error"));
+    }
+
+    function showValidationError(message, element) {
+      formError.innerHTML = `<strong>⚠️ Revisa tu pedido</strong>${message}`;
+      formError.classList.remove("hidden");
+
+      markField(element);
+
+      const target = element || formError;
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      if (element && typeof element.focus === "function") {
+        setTimeout(() => element.focus({ preventScroll: true }), 350);
+      }
+    }
+
+    function validateOrder() {
+      clearValidation();
+
+      const nameField = document.getElementById("name");
+      const phoneField = document.getElementById("phone");
+      const timeField = document.getElementById("timeSlot");
+      const addressField = document.getElementById("address");
+
+      const name = nameField.value.trim();
+      const phone = phoneField.value.trim();
+      const time = timeField.value;
+      const type = deliveryType.value;
+
+      if (!name) {
+        showValidationError("Falta escribir tu nombre para apartar la salsa.", nameField);
+        return false;
+      }
+
+      if (!phone) {
+        showValidationError("Falta agregar tu teléfono o WhatsApp para confirmar el pedido.", phoneField);
+        return false;
+      }
+
+      if (phone.replace(/\D/g, "").length < 10) {
+        showValidationError("Revisa tu teléfono. Debe tener al menos 10 dígitos.", phoneField);
+        return false;
+      }
+
+      if (type === "Recoger en punto cercano" && !getCheckedValue("pickupPoint")) {
+        showValidationError("Elige un punto cercano para recoger tu pedido.", pickupBox);
+        return false;
+      }
+
+      if (type === "Entrega a domicilio") {
+        if (!getCheckedValue("homeZone")) {
+          showValidationError("Selecciona la zona de entrega a domicilio.", homeBox);
+          return false;
+        }
+
+        if (!addressField.value.trim()) {
+          showValidationError("Agrega una dirección o referencia breve para la entrega a domicilio.", addressField);
+          return false;
+        }
+      }
+
+      if (!time) {
+        showValidationError("Falta seleccionar un horario preferido de entrega.", timeField);
+        return false;
+      }
+
+      return true;
+    }
+
+    orderForm.addEventListener("input", clearValidation);
+    orderForm.addEventListener("change", clearValidation);
+
     orderForm.addEventListener("submit", (event) => {
       event.preventDefault();
       updateTotal();
 
-      const name = document.getElementById("name").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const time = document.getElementById("timeSlot").value;
-
-      if (!name || !phone || !time) {
-        alert("Por favor completa tu nombre, teléfono y horario preferido.");
-        return;
-      }
+      if (!validateOrder()) return;
 
       const message = encodeURIComponent(buildMessage());
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-      window.open(url, "_blank", "noopener,noreferrer");
+
+      // En celular es más confiable cambiar la ubicación actual que abrir una ventana nueva.
+      window.location.href = url;
     });
 
     updateTotal();
